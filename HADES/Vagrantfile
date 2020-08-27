@@ -1,0 +1,15 @@
+Vagrant.configure("2") do |config|
+    config.vm.box = "peru/ubuntu-18.04-desktop-amd64"
+    config.vm.box_version = "20190901.01"
+	config.vm.box_download_insecure = true
+    config.vm.hostname = "HADES"
+    config.vm.network "public_network"
+    config.vm.synced_folder "E:\\Security", "/Security"
+    config.vm.provision "shell", path: "provision.sh"
+    config.vm.provider "virtualbox" do |vb|
+        vb.gui = true
+        vb.memory = 8192
+        vb.cpus = 4
+        vb.name = "HADES"
+    end
+end
